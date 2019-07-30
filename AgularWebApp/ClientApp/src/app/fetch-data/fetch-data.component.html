@@ -1,0 +1,23 @@
+<h1>New Stories</h1>
+
+<p *ngIf="!newsStories"><em>Loading...</em></p>
+<div class="container" *ngIf="newsStories">
+  <div class="form-group text-center">
+    <div class="btn-group">
+      <button class="btn btn-primary" [disabled]="loading || page === 0" (click)="setPage(0)">First</button>
+      <button class="btn btn-primary" [disabled]="loading || page === 0" (click)="previous()">Previous</button>
+      <button class="btn btn-primary" [disabled]="loading || page === 49" (click)="next()">Next</button>
+      <button class="btn btn-primary" [disabled]="loading || page === 49" (click)="setPage(49)">Last</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div *ngFor="let story of newsStories" class="card col-md-6">
+        <div class="card-body">
+          <h5 class="card-title"><a href="story.url">{{story.title}}</a></h5>
+          <h6 class="card-subtitle text-muted">Submitted by {{story.by}} - {{story.score}} points</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
